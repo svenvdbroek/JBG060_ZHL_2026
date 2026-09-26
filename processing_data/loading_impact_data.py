@@ -334,7 +334,7 @@ def load_ipc_data() -> pd.DataFrame:
     fnames = [f for f in os.listdir(folder_name) if os.path.isfile(os.path.join(folder_name, f))]
 
     # Get county data
-    all_counties = []
+    all_areas = []
     for filename in fnames:
         filepath = os.path.join(folder_name, filename)
         df = pd.read_excel(filepath)
@@ -343,36 +343,44 @@ def load_ipc_data() -> pd.DataFrame:
         df["is_county"] = df["Area Name"].str.startswith("  ")
         df["Area Name"] = df["Area Name"].str.strip()
 
-        # Keep county rows and rename Area Name
+        # Counties
         counties = df[df["is_county"]].copy()
-        counties = counties.rename(columns={"Area Name": "County"})
+        counties["Area_level"] = "County"
+
+        # States
+        states = df[(~df["is_county"]) & (df["Area Name"] != "ANALYSIS TOTALS")].copy()
+        states["Area_level"] = "State"
+
+        # Create areas
+        areas = pd.concat([states, counties], ignore_index=True)
 
         # Convert dates
-        counties["Current - From Date"] = pd.to_datetime(counties["Current - From Date"], unit ='D')
-        counties["Current - Thru Date"] = pd.to_datetime(counties["Current - Thru Date"], unit ='D')
+        areas["Current - From Date"] = pd.to_datetime(areas["Current - From Date"], unit ='D')
+        areas["Current - Thru Date"] = pd.to_datetime(areas["Current - Thru Date"], unit ='D')
+
+        
+
+        # Concatenate all counties and rename columns
+        areas = areas.rename(columns={
+            "Area Name": "Area",
+            "Current - From Date": "Start Date",
+            "Current - Thru Date": "End Date",
+            "Current - Phase 3+": "Phase 3+ Pop",
+            "Current - Est Pop": "Estimated Population",
+            "Current - Phase 3+ %": "Phase 3+ Share"})
 
         # Keep relevant columns
-        all_counties.append(counties[["Current - From Date", "Current - Thru Date", "County", "Current - Phase 3+"]])
+        all_areas.append(areas[["Start Date", "End Date", "Area", "Area_level", "Estimated Population", "Phase 3+ Pop", "Phase 3+ Share"]])
 
-    # Concatenate all counties and rename columns
-    combined = pd.concat(all_counties, ignore_index=True)
-    combined = combined.rename(columns={
-        "Current - From Date": "Start Date",
-        "Current - Thru Date": "End Date",
-        "Current - Phase 3+": "Phase 3+ Pop"
-    })
+    #Combine all excel files
+    combined = pd.concat(all_areas, ignore_index=True)
 
-    # Pivot so each county is a column, value = Phase 3+ population
-    result = combined.pivot_table(
-        index=["Start Date", "End Date"],
-        columns="County",
-        values="Phase 3+ Pop"
-    ).reset_index()
+    # Sorting
+    combined = combined.sort_values(
+        ["Start Date", "Area_level", "Area"]
+    ).reset_index(drop=True)
 
-    # Sort dataframe by start date and reset index
-    result = result.sort_values("Start Date").reset_index(drop=True)
-
-    return result
+    return combined
 
 
 
