@@ -1,10 +1,6 @@
 from processing_data.loading_impact_data import (load_ipc_data, load_admin_boundaries)
-
-import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
 from pathlib import Path
-from matplotlib.ticker import StrMethodFormatter
 
 
 
@@ -93,8 +89,7 @@ state_avg_share = (ipc[ipc["Area_level"] == "State"].groupby("Area")["IPC3+_shar
 print("State average IPC3+ share")
 print(state_avg_share)
 
-state_median_share = (
-    ipc[ipc["Area_level"] == "State"].groupby("Area")["IPC3+_share_%"].median().sort_values(ascending=False))
+state_median_share = (ipc[ipc["Area_level"] == "State"].groupby("Area")["IPC3+_share_%"].median().sort_values(ascending=False))
 #print(state_median_share.head(20))
 
 
@@ -104,9 +99,7 @@ top20 = (county_avg_share.head(20).sort_values("IPC3+_share_%"))
 
 fig, ax = plt.subplots(figsize=(10, 7))
 
-ax.barh(
-    top20["County_label"],
-    top20["IPC3+_share_%"])
+ax.barh(top20["County_label"], top20["IPC3+_share_%"])
 
 ax.set_xlabel("Average population in IPC Phase 3+ (%)")
 ax.set_ylabel("County")
@@ -121,9 +114,7 @@ state_plot = state_avg_share.sort_values()
 
 fig, ax = plt.subplots(figsize=(10, 7))
 
-ax.barh(
-    state_plot.index,
-    state_plot.values)
+ax.barh(state_plot.index, state_plot.values)
 
 ax.set_xlabel("Average population in IPC Phase 3+ (%)")
 ax.set_ylabel("State")
@@ -144,9 +135,7 @@ selected_states = [
     "Upper Nile",
     "Western Equatoria"]
 
-state_time = ipc[
-    (ipc["Area_level"] == "State") &
-    (ipc["Area"].isin(selected_states))].copy()
+state_time = ipc[(ipc["Area_level"] == "State") & (ipc["Area"].isin(selected_states))].copy()
 
 state_time = state_time.sort_values("Start Date")
 
@@ -167,7 +156,6 @@ ax.set_title("IPC Phase 3+ share over time in selected states")
 
 ax.legend()
 save_plot(fig, "ipc_phase3_share_over_time_selected_states.png")
-
 
 
 # County time series plot
