@@ -1,6 +1,9 @@
 processing_data/evapotranspiration
 raw_data/flood_masks/compact_recurring/*_meta.json
 raw_data/flood_masks/compact_unusual/*_meta.json
+processing_data/floods/forecasts.csv
+processing_data/floods/forecasts_rf.csv
+processing_data/floods/forecast_results*.csv
 
 .venv
 *.pyc

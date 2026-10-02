@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics import accuracy_score, precision_score, confusion_matrix, roc_auc_score
 
-FORECASTS_PATH = "processing_data/floods/forecasts.csv"
+FORECASTS_PATH = "processing_data/floods/forecasts_rf.csv" # Change to the XGBoost one or RF one
 DEFAULT_THRESHOLD = 0.5
 TARGET_FNR = 0.10  # find the threshold that gets false negative rate down to about this level
 
@@ -51,7 +51,7 @@ def best_threshold_for_target_fnr(scan, target_fnr=TARGET_FNR):
 
 
 def main():
-    preds = pd.read_csv(FORECASTS_PATH)
+    preds = pd.read_csv(FORECASTS_PATH).rename(columns={"p_rf": "p_flood"})
 
     print(f"Default threshold ({DEFAULT_THRESHOLD}) vs climatology baseline:\n")
     rows = []
