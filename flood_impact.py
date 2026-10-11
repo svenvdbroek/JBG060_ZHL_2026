@@ -44,24 +44,46 @@ print("cattle:", round(counties["cattle"].sum() / 1e6, 1), "million")
 crop = pd.read_csv("processing_data/crops/crop_by_county.csv")[["adm2_pcode", "crop_km2"]]
 counties = counties.merge(crop, on="adm2_pcode")
 
-fc = pd.read_csv("processing_data/floods/forecasts.csv")
-fc = fc[fc["lead"] == 1].merge(counties, on="adm2_pcode")
+threshold = 0.02
+models = {1: "lr", 3: "rf", 6: "rf"}
+
+keep = ["adm2_pcode", "adm2_name", "adm1_name", "target_year", "target_month", "lead", "model", "target", "flood",
+        "p_flood"]
+lr = pd.read_csv("processing_data/floods/forecasts_lr.csv").rename(columns={"p_lr": "p_flood"}).assign(model="lr")
+rf = pd.read_csv("processing_data/floods/forecasts_rf.csv").rename(columns={"p_rf": "p_flood"}).assign(model="rf")
+both = pd.concat([lr[keep], rf[keep]])
+fc = pd.concat([both[(both["lead"] == h) & (both["model"] == m)] for h, m in models.items()], ignore_index=True)
+
+cm = pd.read_csv("processing_data/floods/county_month.csv")
+cm = cm[cm["frac_flooded"] > threshold]
+fc["issue_year"] = (fc["target_year"] * 12 + fc["target_month"] - 1 - fc["lead"]) // 12
+sizes = []
+for y in fc["issue_year"].unique():
+    s = cm[cm["year"] < y].groupby("adm2_pcode")["frac_flooded"].mean().reset_index(name="flood_size")
+    sizes.append(s.assign(issue_year=y))
+fc = fc.merge(pd.concat(sizes), on=["adm2_pcode", "issue_year"], how="left")
+fc["flood_size"] = fc["flood_size"].fillna(0)
+fc["pred"] = fc["p_flood"] * fc["flood_size"]
+
+fc = fc.merge(counties, on="adm2_pcode")
 for c in ["people", "cattle", "crop_km2"]:
     fc[f"{c}_forecast"] = fc["pred"] * fc[c]
     fc[f"{c}_actual"] = fc["target"] * fc[c]
 fc.to_csv("processing_data/floods/impact_forecasts.csv", index=False)
 
-monthly = fc.groupby(["target_year", "target_month"])[
-    ["people_forecast", "people_actual", "crop_km2_forecast", "crop_km2_actual"]].sum()
-monthly.index = pd.to_datetime(pd.DataFrame({"year": monthly.index.get_level_values(0),
-                                             "month": monthly.index.get_level_values(1), "day": 1}))
-print("\ncorrelation forecast vs actual people in flooded area (whole country per month):",
-      round(monthly["people_forecast"].corr(monthly["people_actual"]), 3))
+monthly = fc.groupby(["lead", "target_year", "target_month"])[
+    ["people_forecast", "people_actual", "crop_km2_forecast", "crop_km2_actual"]].sum().reset_index()
+monthly["date"] = pd.to_datetime(pd.DataFrame({"year": monthly["target_year"], "month": monthly["target_month"],
+                                                "day": 1}))
+print("correlation forecast vs actual people in flooded area (whole country per month):")
+for h, g in monthly.groupby("lead"):
+    print(f"{h} month ahead ({models[h]}):", round(g["people_forecast"].corr(g["people_actual"]), 3))
 
-worst = fc.groupby(["target_year", "target_month"])["people_actual"].sum().idxmax()
-month = fc[(fc["target_year"] == worst[0]) & (fc["target_month"] == worst[1])].copy()
+one = fc[fc["lead"] == 1]
+worst = one.groupby(["target_year", "target_month"])["people_actual"].sum().idxmax()
+month = one[(one["target_year"] == worst[0]) & (one["target_month"] == worst[1])].copy()
 month["people_diff"] = month["people_forecast"] - month["people_actual"]
-print(f"\nworst month: {worst[1]}/{worst[0]}. top 10 counties by people in the forecast flood area:")
+print(f"worst month: {worst[1]}/{worst[0]}. top 10 counties by people in the forecast flood area:")
 print(month.sort_values("people_forecast", ascending=False)[
     ["adm2_name", "adm1_name", "p_flood", "pred", "target", "people_forecast", "people_actual", "crop_km2_forecast"]
 ].head(10).round(3).to_string(index=False))
@@ -69,8 +91,10 @@ print(month.sort_values("people_forecast", ascending=False)[
 os.makedirs("images", exist_ok=True)
 
 fig, ax = plt.subplots(figsize=(11, 4.5))
-ax.plot(monthly.index, monthly["people_actual"] / 1000, label="what happened")
-ax.plot(monthly.index, monthly["people_forecast"] / 1000, label="forecast 1 month before")
+base = monthly[monthly["lead"] == 1]
+ax.plot(base["date"], base["people_actual"] / 1000, label="what happened")
+for h, g in monthly.groupby("lead"):
+    ax.plot(g["date"], g["people_forecast"] / 1000, label=f"forecast {h} month before ({models[h]})")
 ax.set_ylabel("people in flooded area (thousands)")
 ax.set_title("People living in the flooded part of their county, whole country per month")
 ax.grid(alpha=0.3)
@@ -91,6 +115,6 @@ for ax, col, title in [(axes[1], "people_forecast", "forecast: people in flooded
     ax.set_title(title)
 for ax in axes:
     ax.set_axis_off()
-fig.suptitle(f"{worst[1]}/{worst[0]}, forecast made 1 month before (gray = no flood data)")
+fig.suptitle(f"{worst[1]}/{worst[0]}, lr forecast made 1 month before (gray = no flood data)")
 plt.tight_layout()
 plt.savefig("images/impact_map.png", dpi=150, bbox_inches="tight")
