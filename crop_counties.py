@@ -16,12 +16,10 @@ lons = crop.longitude.values
 res = lons[1] - lons[0]
 transform = from_origin(lons[0] - res / 2, lats[0] + res / 2, res, res)
 
-# give every pixel the number of the county it is in (0 = outside south sudan)
 shapes = [(geom, i + 1) for i, geom in enumerate(admin2.geometry)]
 county_raster = rasterize(shapes, out_shape=crop.shape, transform=transform)
 in_ssd = county_raster > 0
 
-# pixel is 0.00446 degrees, 1 degree is about 111 km -> roughly 0.5 x 0.5 km
 pixel_km2 = (res * 111) ** 2
 
 crop_km2 = crop.values / 100 * pixel_km2

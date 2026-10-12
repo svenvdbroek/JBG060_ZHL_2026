@@ -65,7 +65,7 @@ fc = fc.merge(pd.concat(sizes), on=["adm2_pcode", "issue_year"], how="left")
 fc["flood_size"] = fc["flood_size"].fillna(0)
 fc["pred"] = fc["p_flood"] * fc["flood_size"]
 
-fc = fc.merge(counties, on="adm2_pcode")
+fc = fc.merge(counties, on="adm2_pcode")    
 for c in ["people", "cattle", "crop_km2"]:
     fc[f"{c}_forecast"] = fc["pred"] * fc[c]
     fc[f"{c}_actual"] = fc["target"] * fc[c]
@@ -73,17 +73,16 @@ fc.to_csv("processing_data/floods/impact_forecasts.csv", index=False)
 
 monthly = fc.groupby(["lead", "target_year", "target_month"])[
     ["people_forecast", "people_actual", "crop_km2_forecast", "crop_km2_actual"]].sum().reset_index()
-monthly["date"] = pd.to_datetime(pd.DataFrame({"year": monthly["target_year"], "month": monthly["target_month"],
-                                                "day": 1}))
+monthly["date"] = pd.to_datetime(pd.DataFrame({"year": monthly["target_year"], "month": monthly["target_month"], "day": 1}))
 print("correlation forecast vs actual people in flooded area (whole country per month):")
 for h, g in monthly.groupby("lead"):
-    print(f"{h} month ahead ({models[h]}):", round(g["people_forecast"].corr(g["people_actual"]), 3))
+    print(f"  {h} month ahead ({models[h]}):", round(g["people_forecast"].corr(g["people_actual"]), 3))
 
 one = fc[fc["lead"] == 1]
 worst = one.groupby(["target_year", "target_month"])["people_actual"].sum().idxmax()
 month = one[(one["target_year"] == worst[0]) & (one["target_month"] == worst[1])].copy()
 month["people_diff"] = month["people_forecast"] - month["people_actual"]
-print(f"worst month: {worst[1]}/{worst[0]}. top 10 counties by people in the forecast flood area:")
+print(f"\nworst month: {worst[1]}/{worst[0]}. top 10 counties by people in the forecast flood area:")
 print(month.sort_values("people_forecast", ascending=False)[
     ["adm2_name", "adm1_name", "p_flood", "pred", "target", "people_forecast", "people_actual", "crop_km2_forecast"]
 ].head(10).round(3).to_string(index=False))
