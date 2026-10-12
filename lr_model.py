@@ -6,6 +6,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import roc_auc_score, brier_score_loss, log_loss
+import shap
 
 # Same data, features, leads, threshold and expanding-window split as the XGBoost and RF scripts,
 # so results can be compared directly. Logistic regression only does the probability part.
@@ -98,7 +99,7 @@ for h in horizons:
         test["lead"] = h
         preds.append(test[["adm2_pcode", "adm2_name", "adm1_name", "target_year", "target_month", "lead",
                            "target", "flood", "p_lr", "p_clim"]])
-        last_models[h] = m_clf
+        last_models[h] = (m_clf, train, test)
     print("lead", h, "done")
 
 preds = pd.concat(preds, ignore_index=True)
@@ -161,9 +162,44 @@ if os.path.exists(rf_path) and os.path.exists(xgb_path):
 else:
     print("\nforecasts_rf.csv and/or forecasts.csv not found - run the RF and XGBoost scripts first for the comparison.")
 
-# coefficients (lead 1, last test year); features are standardised, so sizes are comparable
-m = last_models[1]
+# SHAP values for LR, computed on the standardised features
+def lr_shap(h):
+    m, train, test = last_models[h]
+    if isinstance(m, float):
+        return None, None
+    scaler, clf = m[0], m[-1]
+    Xs_train = pd.DataFrame(scaler.transform(X(train)), columns=features)
+    Xs_test = pd.DataFrame(scaler.transform(X(test)), columns=features)
+    sv = shap.LinearExplainer(clf, Xs_train).shap_values(Xs_test)  # log-odds contributions
+    return pd.DataFrame(sv, columns=features, index=test.index), test
+
+
+# standardised coefficients (lead 1, last test year); mainly for reference!
+m = last_models[1][0]
 if not isinstance(m, float):
     coef = pd.Series(m[-1].coef_[0], index=features)
     print("\nstandardised coefficients, lead 1, last test year (positive = higher flood probability):")
     print(coef.reindex(coef.abs().sort_values(ascending=False).index).round(3).to_string())
+
+groups = {
+    "flood history": ["frac_flooded", "frac_unusual", "flood_days", "frac_lag1", "frac_lag2",
+                      "frac_lag12", "frac_max12", "frac_mean12", "frac_target_lastyear", "lastyear_missing"],
+    "time of year": ["month_sin", "month_cos", "target_month"],
+    "location": ["lat", "lon"],
+}
+
+
+def grouped_share(sv):
+    """sv: DataFrame of signed SHAP values (rows x features). Returns % share per group."""
+    tot = pd.DataFrame({name: sv[[c for c in cols if c in sv.columns]].sum(axis=1)
+                        for name, cols in groups.items()})
+    imp = tot.abs().mean()
+    return (imp / imp.sum() * 100).round(1)
+
+
+for h in [1, 6]:
+    sv, test = lr_shap(h)
+    if sv is None:
+        continue
+    print(f"\nLR SHAP share per group, lead {h}, 2025 (%):")
+    print(grouped_share(sv).to_string())
