@@ -1,0 +1,24 @@
+dataset,rows,columns,columns_with_missing,missing_cells,pct_cells_missing
+flood_masks,75491004,5,0,0,0.0
+era5_rainfall_runoff,33208770,2,0,0,0.0
+river_discharge,124392,1,1,250,0.201
+lake_victoria,329,15,0,0,0.0
+lake_Kyoga,156,15,0,0,0.0
+lake_Albert,850,2,0,0,0.0
+admin1_boundaries,10,22,10,100,45.455
+admin2_boundaries,79,27,13,1027,48.148
+health_facilities,1747,10,1,13,0.074
+raster_crop_mask,2366461440,1,0,0,0.0
+raster_rangeland_mask,2366461440,1,0,0,0.0
+raster_cattle,148745,1,1,75438,50.716
+raster_worldpop_2015_2025,1634395136,1,1,1602397489,98.042
+flood_panel (RF training data),10428,20,3,21172,10.152
+model_table: raw,23100,59,4,10934,0.802
+model_table: after coverage>0.5,22500,60,4,10650,0.789
+model_table: lead 1 (model features + target),22425,13,1,825,0.283
+model_table: lead 2 (model features + target),22350,13,1,750,0.258
+model_table: lead 3 (model features + target),22275,13,1,675,0.233
+model_table: lead 6 (model features + target),22050,13,1,450,0.157
+forecasts_xgboost,50400,11,0,0,0.0
+forecasts_rf,50400,11,0,0,0.0
+forecasts_lr,50400,8,0,0,0.0

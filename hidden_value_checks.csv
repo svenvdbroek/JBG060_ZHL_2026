@@ -1,0 +1,39 @@
+dataset,series,column,n_valid,sentinel_values,zeros,pct_zero,negatives,longest_constant_run,duplicate_index
+river_discharge,100205,Discharge (m3/s),10353,0.0,0,0.0,0,3.0,0.0
+river_discharge,1541,Discharge (m3/s),10345,0.0,0,0.0,0,2.0,0.0
+river_discharge,1542,Discharge (m3/s),10345,0.0,0,0.0,0,4.0,0.0
+river_discharge,1543,Discharge (m3/s),10344,0.0,0,0.0,0,2.0,0.0
+river_discharge,1544,Discharge (m3/s),10345,0.0,155,1.5,0,11.0,0.0
+river_discharge,1545,Discharge (m3/s),10345,0.0,54,0.52,0,10.0,0.0
+river_discharge,1547,Discharge (m3/s),10343,0.0,0,0.0,0,2.0,0.0
+river_discharge,1548,Discharge (m3/s),10343,0.0,0,0.0,0,3.0,0.0
+river_discharge,11808,Discharge (m3/s),10345,0.0,0,0.0,0,4.0,0.0
+river_discharge,11842,Discharge (m3/s),10346,0.0,0,0.0,0,3.0,0.0
+river_discharge,28546,Discharge (m3/s),10344,0.0,1011,9.77,0,127.0,0.0
+river_discharge,1505,Discharge (m3/s),10344,0.0,0,0.0,0,4.0,0.0
+lake_victoria,victoria,cycle,329,0.0,0,0.0,0,1.0,0.0
+lake_victoria,victoria,hour,329,0.0,11,3.34,0,1.0,0.0
+lake_victoria,victoria,minute,329,0.0,6,1.82,0,1.0,0.0
+lake_victoria,victoria,height_wrt_ref,329,0.0,1,0.3,0,3.0,0.0
+lake_victoria,victoria,height_err,329,0.0,0,0.0,0,36.0,0.0
+lake_victoria,victoria,backscatter_ku,329,0.0,0,0.0,0,1.0,0.0
+lake_victoria,victoria,mode1,329,0.0,0,0.0,0,329.0,0.0
+lake_victoria,victoria,mode2,329,0.0,329,100.0,0,329.0,0.0
+lake_victoria,victoria,ice_flag,329,0.0,329,100.0,0,329.0,0.0
+lake_victoria,victoria,height_egm2008,329,0.0,0,0.0,0,3.0,0.0
+lake_victoria,victoria,data_source_flag,329,0.0,329,100.0,0,329.0,0.0
+lake_Kyoga,Kyoga,cycle,156,0.0,0,0.0,0,1.0,0.0
+lake_Kyoga,Kyoga,hour,156,0.0,4,2.56,0,2.0,0.0
+lake_Kyoga,Kyoga,minute,156,0.0,4,2.56,0,1.0,0.0
+lake_Kyoga,Kyoga,height_wrt_ref,156,0.0,1,0.64,77,2.0,0.0
+lake_Kyoga,Kyoga,height_err,156,0.0,0,0.0,0,2.0,0.0
+lake_Kyoga,Kyoga,backscatter_ku,156,0.0,0,0.0,0,1.0,0.0
+lake_Kyoga,Kyoga,mode1,156,0.0,0,0.0,0,106.0,0.0
+lake_Kyoga,Kyoga,mode2,156,0.0,55,35.26,0,8.0,0.0
+lake_Kyoga,Kyoga,ice_flag,156,0.0,156,100.0,0,156.0,0.0
+lake_Kyoga,Kyoga,height_egm2008,156,0.0,0,0.0,0,2.0,0.0
+lake_Kyoga,Kyoga,data_source_flag,156,0.0,156,100.0,0,156.0,0.0
+lake_Albert,Albert,water_level,850,0.0,0,0.0,0,2.0,0.0
+lake_Albert,Albert,error,850,0.0,556,65.41,0,11.0,0.0
+era5_rainfall_runoff,all,tp,33208770,,18872889,56.83,0,,
+era5_rainfall_runoff,all,ro,33208770,,20786939,62.59,0,,

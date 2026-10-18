@@ -1,0 +1,325 @@
+dataset,column,rows,missing,pct_missing
+flood_masks,date,75491004,0,0.0
+flood_masks,lat,75491004,0,0.0
+flood_masks,lon,75491004,0,0.0
+flood_masks,tile,75491004,0,0.0
+flood_masks,flood_type,75491004,0,0.0
+era5_rainfall_runoff,tp,33208770,0,0.0
+era5_rainfall_runoff,ro,33208770,0,0.0
+river_discharge,Discharge (m3/s),124392,250,0.2
+lake_victoria,mission,329,0,0.0
+lake_victoria,cycle,329,0,0.0
+lake_victoria,hour,329,0,0.0
+lake_victoria,minute,329,0,0.0
+lake_victoria,height_wrt_ref,329,0,0.0
+lake_victoria,height_err,329,0,0.0
+lake_victoria,backscatter_ku,329,0,0.0
+lake_victoria,wet_tropo_corr,329,0,0.0
+lake_victoria,iono_corr,329,0,0.0
+lake_victoria,dry_tropo_corr,329,0,0.0
+lake_victoria,mode1,329,0,0.0
+lake_victoria,mode2,329,0,0.0
+lake_victoria,ice_flag,329,0,0.0
+lake_victoria,height_egm2008,329,0,0.0
+lake_victoria,data_source_flag,329,0,0.0
+lake_Kyoga,mission,156,0,0.0
+lake_Kyoga,cycle,156,0,0.0
+lake_Kyoga,hour,156,0,0.0
+lake_Kyoga,minute,156,0,0.0
+lake_Kyoga,height_wrt_ref,156,0,0.0
+lake_Kyoga,height_err,156,0,0.0
+lake_Kyoga,backscatter_ku,156,0,0.0
+lake_Kyoga,wet_tropo_corr,156,0,0.0
+lake_Kyoga,iono_corr,156,0,0.0
+lake_Kyoga,dry_tropo_corr,156,0,0.0
+lake_Kyoga,mode1,156,0,0.0
+lake_Kyoga,mode2,156,0,0.0
+lake_Kyoga,ice_flag,156,0,0.0
+lake_Kyoga,height_egm2008,156,0,0.0
+lake_Kyoga,data_source_flag,156,0,0.0
+lake_Albert,water_level,850,0,0.0
+lake_Albert,error,850,0,0.0
+admin1_boundaries,adm1_name,10,0,0.0
+admin1_boundaries,adm1_name1,10,10,100.0
+admin1_boundaries,adm1_name2,10,10,100.0
+admin1_boundaries,adm1_name3,10,10,100.0
+admin1_boundaries,adm1_pcode,10,0,0.0
+admin1_boundaries,adm0_name,10,0,0.0
+admin1_boundaries,adm0_name1,10,10,100.0
+admin1_boundaries,adm0_name2,10,10,100.0
+admin1_boundaries,adm0_name3,10,10,100.0
+admin1_boundaries,adm0_pcode,10,0,0.0
+admin1_boundaries,valid_on,10,0,0.0
+admin1_boundaries,valid_to,10,10,100.0
+admin1_boundaries,area_sqkm,10,0,0.0
+admin1_boundaries,version,10,0,0.0
+admin1_boundaries,lang,10,0,0.0
+admin1_boundaries,lang1,10,10,100.0
+admin1_boundaries,lang2,10,10,100.0
+admin1_boundaries,lang3,10,10,100.0
+admin1_boundaries,adm1_ref_name,10,0,0.0
+admin1_boundaries,center_lat,10,0,0.0
+admin1_boundaries,center_lon,10,0,0.0
+admin1_boundaries,geometry,10,0,0.0
+admin2_boundaries,adm2_name,79,0,0.0
+admin2_boundaries,adm2_name1,79,79,100.0
+admin2_boundaries,adm2_name2,79,79,100.0
+admin2_boundaries,adm2_name3,79,79,100.0
+admin2_boundaries,adm2_pcode,79,0,0.0
+admin2_boundaries,adm1_name,79,0,0.0
+admin2_boundaries,adm1_name1,79,79,100.0
+admin2_boundaries,adm1_name2,79,79,100.0
+admin2_boundaries,adm1_name3,79,79,100.0
+admin2_boundaries,adm1_pcode,79,0,0.0
+admin2_boundaries,adm0_name,79,0,0.0
+admin2_boundaries,adm0_name1,79,79,100.0
+admin2_boundaries,adm0_name2,79,79,100.0
+admin2_boundaries,adm0_name3,79,79,100.0
+admin2_boundaries,adm0_pcode,79,0,0.0
+admin2_boundaries,valid_on,79,0,0.0
+admin2_boundaries,valid_to,79,79,100.0
+admin2_boundaries,area_sqkm,79,0,0.0
+admin2_boundaries,version,79,0,0.0
+admin2_boundaries,lang,79,0,0.0
+admin2_boundaries,lang1,79,79,100.0
+admin2_boundaries,lang2,79,79,100.0
+admin2_boundaries,lang3,79,79,100.0
+admin2_boundaries,adm2_ref_name,79,0,0.0
+admin2_boundaries,center_lat,79,0,0.0
+admin2_boundaries,center_lon,79,0,0.0
+admin2_boundaries,geometry,79,0,0.0
+health_facilities,FID,1747,0,0.0
+health_facilities,Country,1747,0,0.0
+health_facilities,Admin1,1747,0,0.0
+health_facilities,Facility_n,1747,0,0.0
+health_facilities,Facility_t,1747,0,0.0
+health_facilities,Ownership,1747,0,0.0
+health_facilities,Lat,1747,0,0.0
+health_facilities,Long,1747,0,0.0
+health_facilities,LL_source,1747,0,0.0
+health_facilities,geometry,1747,13,0.74
+raster_crop_mask,pixels,2366461440,0,0.0
+raster_rangeland_mask,pixels,2366461440,0,0.0
+raster_cattle,pixels,148745,75438,50.72
+raster_worldpop_2015_2025,pixels,1634395136,1602397489,98.04
+flood_panel (RF training data),adm2_name,10428,0,0.0
+flood_panel (RF training data),month,10428,0,0.0
+flood_panel (RF training data),flood_pixel_count,10428,0,0.0
+flood_panel (RF training data),unusual_pixel_count,10428,0,0.0
+flood_panel (RF training data),flooded,10428,0,0.0
+flood_panel (RF training data),unusual_flood,10428,0,0.0
+flood_panel (RF training data),precip_mm,10428,0,0.0
+flood_panel (RF training data),runoff_mm,10428,0,0.0
+flood_panel (RF training data),discharge_m3s,10428,0,0.0
+flood_panel (RF training data),discharge_station_id,10428,0,0.0
+flood_panel (RF training data),lake_victoria_level,10428,10428,100.0
+flood_panel (RF training data),lake_kyoga_level,10428,10428,100.0
+flood_panel (RF training data),lake_albert_level,10428,316,3.03
+flood_panel (RF training data),area_sqkm,10428,0,0.0
+flood_panel (RF training data),crop_pct,10428,0,0.0
+flood_panel (RF training data),rangeland_pct,10428,0,0.0
+flood_panel (RF training data),cattle_count,10428,0,0.0
+flood_panel (RF training data),year,10428,0,0.0
+flood_panel (RF training data),population,10428,0,0.0
+flood_panel (RF training data),health_facility_count,10428,0,0.0
+model_table: raw,adm2_pcode,23100,0,0.0
+model_table: raw,adm2_name,23100,0,0.0
+model_table: raw,adm1_name,23100,0,0.0
+model_table: raw,year,23100,0,0.0
+model_table: raw,month,23100,0,0.0
+model_table: raw,pixels,23100,0,0.0
+model_table: raw,coverage,23100,0,0.0
+model_table: raw,px_flooded,23100,0,0.0
+model_table: raw,px_unusual,23100,0,0.0
+model_table: raw,frac_flooded,23100,0,0.0
+model_table: raw,frac_unusual,23100,0,0.0
+model_table: raw,flood_days,23100,0,0.0
+model_table: raw,tp,23100,0,0.0
+model_table: raw,ro,23100,0,0.0
+model_table: raw,lat,23100,0,0.0
+model_table: raw,lon,23100,0,0.0
+model_table: raw,tp_upstream,23100,0,0.0
+model_table: raw,ro_upstream,23100,0,0.0
+model_table: raw,tp_lag1,23100,0,0.0
+model_table: raw,tp_lag2,23100,0,0.0
+model_table: raw,tp_lag3,23100,0,0.0
+model_table: raw,tp_sum3,23100,0,0.0
+model_table: raw,tp_sum6,23100,0,0.0
+model_table: raw,ro_lag1,23100,0,0.0
+model_table: raw,ro_lag2,23100,0,0.0
+model_table: raw,ro_lag3,23100,0,0.0
+model_table: raw,ro_sum3,23100,0,0.0
+model_table: raw,ro_sum6,23100,0,0.0
+model_table: raw,tp_upstream_lag1,23100,0,0.0
+model_table: raw,tp_upstream_lag2,23100,0,0.0
+model_table: raw,tp_upstream_lag3,23100,0,0.0
+model_table: raw,tp_upstream_sum3,23100,0,0.0
+model_table: raw,tp_upstream_sum6,23100,0,0.0
+model_table: raw,ro_upstream_lag1,23100,0,0.0
+model_table: raw,ro_upstream_lag2,23100,0,0.0
+model_table: raw,ro_upstream_lag3,23100,0,0.0
+model_table: raw,ro_upstream_sum3,23100,0,0.0
+model_table: raw,ro_upstream_sum6,23100,0,0.0
+model_table: raw,frac_lag1,23100,0,0.0
+model_table: raw,frac_lag2,23100,0,0.0
+model_table: raw,frac_lag12,23100,0,0.0
+model_table: raw,lake_victoria,23100,0,0.0
+model_table: raw,lake_kyoga,23100,0,0.0
+model_table: raw,lake_albert,23100,2156,9.33
+model_table: raw,discharge,23100,0,0.0
+model_table: raw,lake_victoria_chg1,23100,0,0.0
+model_table: raw,lake_victoria_chg3,23100,0,0.0
+model_table: raw,lake_victoria_chg12,23100,0,0.0
+model_table: raw,lake_kyoga_chg1,23100,0,0.0
+model_table: raw,lake_kyoga_chg3,23100,0,0.0
+model_table: raw,lake_kyoga_chg12,23100,0,0.0
+model_table: raw,lake_albert_chg1,23100,2310,10.0
+model_table: raw,lake_albert_chg3,23100,2618,11.33
+model_table: raw,lake_albert_chg12,23100,3850,16.67
+model_table: raw,discharge_chg1,23100,0,0.0
+model_table: raw,discharge_chg3,23100,0,0.0
+model_table: raw,discharge_chg12,23100,0,0.0
+model_table: raw,crop_pct,23100,0,0.0
+model_table: raw,range_pct,23100,0,0.0
+model_table: after coverage>0.5,adm2_pcode,22500,0,0.0
+model_table: after coverage>0.5,adm2_name,22500,0,0.0
+model_table: after coverage>0.5,adm1_name,22500,0,0.0
+model_table: after coverage>0.5,year,22500,0,0.0
+model_table: after coverage>0.5,month,22500,0,0.0
+model_table: after coverage>0.5,pixels,22500,0,0.0
+model_table: after coverage>0.5,coverage,22500,0,0.0
+model_table: after coverage>0.5,px_flooded,22500,0,0.0
+model_table: after coverage>0.5,px_unusual,22500,0,0.0
+model_table: after coverage>0.5,frac_flooded,22500,0,0.0
+model_table: after coverage>0.5,frac_unusual,22500,0,0.0
+model_table: after coverage>0.5,flood_days,22500,0,0.0
+model_table: after coverage>0.5,tp,22500,0,0.0
+model_table: after coverage>0.5,ro,22500,0,0.0
+model_table: after coverage>0.5,lat,22500,0,0.0
+model_table: after coverage>0.5,lon,22500,0,0.0
+model_table: after coverage>0.5,tp_upstream,22500,0,0.0
+model_table: after coverage>0.5,ro_upstream,22500,0,0.0
+model_table: after coverage>0.5,tp_lag1,22500,0,0.0
+model_table: after coverage>0.5,tp_lag2,22500,0,0.0
+model_table: after coverage>0.5,tp_lag3,22500,0,0.0
+model_table: after coverage>0.5,tp_sum3,22500,0,0.0
+model_table: after coverage>0.5,tp_sum6,22500,0,0.0
+model_table: after coverage>0.5,ro_lag1,22500,0,0.0
+model_table: after coverage>0.5,ro_lag2,22500,0,0.0
+model_table: after coverage>0.5,ro_lag3,22500,0,0.0
+model_table: after coverage>0.5,ro_sum3,22500,0,0.0
+model_table: after coverage>0.5,ro_sum6,22500,0,0.0
+model_table: after coverage>0.5,tp_upstream_lag1,22500,0,0.0
+model_table: after coverage>0.5,tp_upstream_lag2,22500,0,0.0
+model_table: after coverage>0.5,tp_upstream_lag3,22500,0,0.0
+model_table: after coverage>0.5,tp_upstream_sum3,22500,0,0.0
+model_table: after coverage>0.5,tp_upstream_sum6,22500,0,0.0
+model_table: after coverage>0.5,ro_upstream_lag1,22500,0,0.0
+model_table: after coverage>0.5,ro_upstream_lag2,22500,0,0.0
+model_table: after coverage>0.5,ro_upstream_lag3,22500,0,0.0
+model_table: after coverage>0.5,ro_upstream_sum3,22500,0,0.0
+model_table: after coverage>0.5,ro_upstream_sum6,22500,0,0.0
+model_table: after coverage>0.5,frac_lag1,22500,0,0.0
+model_table: after coverage>0.5,frac_lag2,22500,0,0.0
+model_table: after coverage>0.5,frac_lag12,22500,0,0.0
+model_table: after coverage>0.5,lake_victoria,22500,0,0.0
+model_table: after coverage>0.5,lake_kyoga,22500,0,0.0
+model_table: after coverage>0.5,lake_albert,22500,2100,9.33
+model_table: after coverage>0.5,discharge,22500,0,0.0
+model_table: after coverage>0.5,lake_victoria_chg1,22500,0,0.0
+model_table: after coverage>0.5,lake_victoria_chg3,22500,0,0.0
+model_table: after coverage>0.5,lake_victoria_chg12,22500,0,0.0
+model_table: after coverage>0.5,lake_kyoga_chg1,22500,0,0.0
+model_table: after coverage>0.5,lake_kyoga_chg3,22500,0,0.0
+model_table: after coverage>0.5,lake_kyoga_chg12,22500,0,0.0
+model_table: after coverage>0.5,lake_albert_chg1,22500,2250,10.0
+model_table: after coverage>0.5,lake_albert_chg3,22500,2550,11.33
+model_table: after coverage>0.5,lake_albert_chg12,22500,3750,16.67
+model_table: after coverage>0.5,discharge_chg1,22500,0,0.0
+model_table: after coverage>0.5,discharge_chg3,22500,0,0.0
+model_table: after coverage>0.5,discharge_chg12,22500,0,0.0
+model_table: after coverage>0.5,crop_pct,22500,0,0.0
+model_table: after coverage>0.5,range_pct,22500,0,0.0
+model_table: after coverage>0.5,t,22500,0,0.0
+model_table: lead 1 (model features + target),frac_flooded,22425,0,0.0
+model_table: lead 1 (model features + target),frac_unusual,22425,0,0.0
+model_table: lead 1 (model features + target),flood_days,22425,0,0.0
+model_table: lead 1 (model features + target),frac_lag1,22425,0,0.0
+model_table: lead 1 (model features + target),frac_lag2,22425,0,0.0
+model_table: lead 1 (model features + target),frac_lag12,22425,0,0.0
+model_table: lead 1 (model features + target),frac_max12,22425,0,0.0
+model_table: lead 1 (model features + target),frac_mean12,22425,0,0.0
+model_table: lead 1 (model features + target),frac_target_lastyear,22425,825,3.68
+model_table: lead 1 (model features + target),lat,22425,0,0.0
+model_table: lead 1 (model features + target),lon,22425,0,0.0
+model_table: lead 1 (model features + target),target_month,22425,0,0.0
+model_table: lead 1 (model features + target),target,22425,0,0.0
+model_table: lead 2 (model features + target),frac_flooded,22350,0,0.0
+model_table: lead 2 (model features + target),frac_unusual,22350,0,0.0
+model_table: lead 2 (model features + target),flood_days,22350,0,0.0
+model_table: lead 2 (model features + target),frac_lag1,22350,0,0.0
+model_table: lead 2 (model features + target),frac_lag2,22350,0,0.0
+model_table: lead 2 (model features + target),frac_lag12,22350,0,0.0
+model_table: lead 2 (model features + target),frac_max12,22350,0,0.0
+model_table: lead 2 (model features + target),frac_mean12,22350,0,0.0
+model_table: lead 2 (model features + target),frac_target_lastyear,22350,750,3.36
+model_table: lead 2 (model features + target),lat,22350,0,0.0
+model_table: lead 2 (model features + target),lon,22350,0,0.0
+model_table: lead 2 (model features + target),target_month,22350,0,0.0
+model_table: lead 2 (model features + target),target,22350,0,0.0
+model_table: lead 3 (model features + target),frac_flooded,22275,0,0.0
+model_table: lead 3 (model features + target),frac_unusual,22275,0,0.0
+model_table: lead 3 (model features + target),flood_days,22275,0,0.0
+model_table: lead 3 (model features + target),frac_lag1,22275,0,0.0
+model_table: lead 3 (model features + target),frac_lag2,22275,0,0.0
+model_table: lead 3 (model features + target),frac_lag12,22275,0,0.0
+model_table: lead 3 (model features + target),frac_max12,22275,0,0.0
+model_table: lead 3 (model features + target),frac_mean12,22275,0,0.0
+model_table: lead 3 (model features + target),frac_target_lastyear,22275,675,3.03
+model_table: lead 3 (model features + target),lat,22275,0,0.0
+model_table: lead 3 (model features + target),lon,22275,0,0.0
+model_table: lead 3 (model features + target),target_month,22275,0,0.0
+model_table: lead 3 (model features + target),target,22275,0,0.0
+model_table: lead 6 (model features + target),frac_flooded,22050,0,0.0
+model_table: lead 6 (model features + target),frac_unusual,22050,0,0.0
+model_table: lead 6 (model features + target),flood_days,22050,0,0.0
+model_table: lead 6 (model features + target),frac_lag1,22050,0,0.0
+model_table: lead 6 (model features + target),frac_lag2,22050,0,0.0
+model_table: lead 6 (model features + target),frac_lag12,22050,0,0.0
+model_table: lead 6 (model features + target),frac_max12,22050,0,0.0
+model_table: lead 6 (model features + target),frac_mean12,22050,0,0.0
+model_table: lead 6 (model features + target),frac_target_lastyear,22050,450,2.04
+model_table: lead 6 (model features + target),lat,22050,0,0.0
+model_table: lead 6 (model features + target),lon,22050,0,0.0
+model_table: lead 6 (model features + target),target_month,22050,0,0.0
+model_table: lead 6 (model features + target),target,22050,0,0.0
+forecasts_xgboost,adm2_pcode,50400,0,0.0
+forecasts_xgboost,target_year,50400,0,0.0
+forecasts_xgboost,target_month,50400,0,0.0
+forecasts_xgboost,lead,50400,0,0.0
+forecasts_xgboost,target,50400,0,0.0
+forecasts_xgboost,flood,50400,0,0.0
+forecasts_xgboost,pred,50400,0,0.0
+forecasts_xgboost,p_flood,50400,0,0.0
+forecasts_xgboost,persistence,50400,0,0.0
+forecasts_xgboost,climatology,50400,0,0.0
+forecasts_xgboost,p_clim,50400,0,0.0
+forecasts_rf,adm2_pcode,50400,0,0.0
+forecasts_rf,target_year,50400,0,0.0
+forecasts_rf,target_month,50400,0,0.0
+forecasts_rf,lead,50400,0,0.0
+forecasts_rf,target,50400,0,0.0
+forecasts_rf,flood,50400,0,0.0
+forecasts_rf,pred_rf,50400,0,0.0
+forecasts_rf,p_rf,50400,0,0.0
+forecasts_rf,persistence,50400,0,0.0
+forecasts_rf,climatology,50400,0,0.0
+forecasts_rf,p_clim,50400,0,0.0
+forecasts_lr,adm2_pcode,50400,0,0.0
+forecasts_lr,target_year,50400,0,0.0
+forecasts_lr,target_month,50400,0,0.0
+forecasts_lr,lead,50400,0,0.0
+forecasts_lr,target,50400,0,0.0
+forecasts_lr,flood,50400,0,0.0
+forecasts_lr,p_lr,50400,0,0.0
+forecasts_lr,p_clim,50400,0,0.0
